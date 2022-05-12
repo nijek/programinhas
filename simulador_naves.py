@@ -8,17 +8,17 @@ from random import seed
 from random import random
 from math import sqrt
 from datetime import datetime
-#from string import split
+import matplotlib.pyplot as plt
 
-eixoX = 200
-eixoY = 200
-eixoZ = 200
-numNaves = 1000
+eixoX = 10
+eixoY = 50
+eixoZ = 100
+numNaves = 300
 
 class Nave:          
     
     total = 0
-    diametro = 5
+    diametro = 1.5
     
     @classmethod
     def change_diametro(cls, diametro):
@@ -88,8 +88,28 @@ def print_colisions(colisions):
             count += 1
             print("Colisão " + str(count) + ":")
             printNaves(l)
+
+def plotarNaves(naves, colisions):
+    
+    fig = plt.figure(figsize=(50,50))
+    ax = fig.add_subplot(111, projection='3d')
+    #TODO: fazer esses labels aparecerem
+    for nave in naves:
+        ax.scatter(nave.x, nave.y, nave.z, color = "blue", label = 'naves')
+    for nave in colisions:
+        ax.scatter(nave[0].x, nave[0].y, nave[0].z, marker = "x", color = "red", label = 'colisões')
+    
+    ax.set_title("Espaço 3D")
+    ax.set_xlabel("Eixo x")
+    ax.set_ylabel("Eixo y")
+    ax.set_zlabel("Eixo z")
+    
+    plt.show()
+
+
+
 while True:
-    inp = input("Tecle 'e' para escolher os valores, 'd' para usar default (espaço (200,200,200) com 1000 naves de diametro 5) ou qualquer outra tecla para sair")
+    inp = input("Tecle 'e' para escolher os valores, 'd' para usar default (espaço (10, 50, 100) com 300 naves e diametro 1.5) ou qualquer outra tecla para sair ")
     if inp == 'e':
         eixos = input("Digite os eixos x, y, z separados por ; ")
         eixos = eixos.split(';')
@@ -106,7 +126,10 @@ while True:
 
     naves = initNaves ([(round(random() * eixoX, 3) , round(random() * eixoY, 3), round(random() * eixoZ, 3)) for _ in range (numNaves)]) 
     printNaves(naves)
-    print_colisions(get_colisions(naves))
+    colisions = get_colisions(naves)
+    print_colisions(colisions)
+    if "s" == input ("Quer plotar o espaço 3D? "):
+        plotarNaves(naves, colisions)
 
 
 
