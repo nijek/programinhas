@@ -7,7 +7,6 @@ Feito inspirado nas classes desse link: https://exercism.org/tracks/python/exerc
 from random import seed
 from random import random
 from math import sqrt
-from datetime import datetime
 import matplotlib.pyplot as plt
 
 eixoX = 10
@@ -122,7 +121,7 @@ while True:
     elif inp != 'd':
         quit()
     
-    seed(datetime.now().second) #tentar ser aleatório
+    seed() 
 
     naves = initNaves ([(round(random() * eixoX, 3) , round(random() * eixoY, 3), round(random() * eixoZ, 3)) for _ in range (numNaves)]) 
     printNaves(naves)
