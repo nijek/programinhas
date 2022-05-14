@@ -66,8 +66,8 @@ class BinaryTree(Node):
 
 seed()  
 tree = BinaryTree(randint(-10000,10000))       
-for i in range(400000):
-    tree.add_value(randint(-10000,10000))
+for i in range(4000000):
+    tree.add_value(randint(-100000,100000))
     
 
 tree.print_tree()    
