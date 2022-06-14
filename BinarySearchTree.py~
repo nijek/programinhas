@@ -98,7 +98,5 @@ for i in range(4):
 
 #print(tree.min(), tree.max())   
 tree.traversal()
-print("\n\n")
-print(tree.min(), tree.max())
             
         
