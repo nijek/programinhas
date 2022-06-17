@@ -11,10 +11,10 @@ from QuickSort import quick_sort
 sys.setrecursionlimit(17500)
 
 x, ymerge_insertion, yquick,yheap = [], [], [], []
-i = 100000
+i = 1
 k = 0
-while i <= 1000000:
-    i += 100000
+while i <= 100000000:
+    i *= 2
     k += 1
     arr1 = [randint(-i, i) for _ in range(i)]
     #arr = [i-j for j in range(i)]
@@ -26,6 +26,7 @@ while i <= 1000000:
     x.append(i)
 
     print("Iteração ", k, ":")
+    print("i = ", i)
     a = time.perf_counter()
     heap_sort(arr3)
     b = time.perf_counter()
